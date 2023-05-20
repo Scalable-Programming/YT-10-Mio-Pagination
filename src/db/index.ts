@@ -1,13 +1,13 @@
 import { config } from "./../config";
-import { Comment } from "./types";
+import { Movie } from "./types";
 import { Collection, Document, MongoClient } from "mongodb";
 
-interface CommentSchema extends Comment, Document {}
+interface MovieSchema extends Movie, Document {}
 
 const client = new MongoClient(config.mongoUrl);
 client.connect();
 
-let collection: Collection<CommentSchema>;
+let collection: Collection<MovieSchema>;
 
 export const getCollection = () => {
   if (collection) {
@@ -16,7 +16,7 @@ export const getCollection = () => {
 
   const db = client.db(config.mongoDatabaseName);
 
-  collection = db.collection("comments");
+  collection = db.collection("movies");
 
   return collection;
 };

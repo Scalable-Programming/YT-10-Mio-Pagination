@@ -1,15 +1,26 @@
-export interface Comment {
-    createdAt: Date;
-    message: string;
-    parentId?: string;
-  }
-  
-  export interface PaginationProps {
-    perPage: number;
-    lastCommentId?: string;
-    sortBy: "createdAt" | "_id";
-    sortValue: 1 | -1;
-    parentId?: string;
-    lastSortValue?: string
-  }
-  
+export interface Movie {
+  createdAt: Date;
+  title: string;
+  overview: string;
+  releaseData: Date;
+  language: string;
+}
+
+export enum SortByFilter {
+  CREATED_AT = "createdAt",
+  RELEASE_DATE = "releaseDate",
+  ID = "id",
+}
+
+export enum SortValueFilter {
+  ASC = "asc",
+  DESC = "desc",
+}
+
+export interface PaginationProps {
+  perPage: number;
+  lastMovieId?: string;
+  sortBy: SortByFilter;
+  sortValue: SortValueFilter;
+  lastSortValue?: string;
+}
